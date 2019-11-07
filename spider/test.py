@@ -7,6 +7,5 @@ from urllib.parse import urlparse
 
 import requests
 
-url = 'https://www.douyu.com/gapi/rkc/directory/0_0/1'
-html = requests.get(url).text
-print(html)
+name = 'lol\u4e91\u9876\u4e4b\u5f08'
+print(name.encode('utf-8').decode('utf-8'))
