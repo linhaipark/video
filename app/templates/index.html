@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block page_content %}
+    <style type="text/css">
+        .table-column{float:left; width:25%; border:10; height:100%;}
+        .table-row{float:left; width:100%; border-left:10px solid #FFF;border-top: 10px solid #FFF;
+                   border-right: 10px solid #FFF;border-bottom: 10px solid #FFF;}
+        .pic-size{width: 97%; height: auto;}
+    </style>
+    <div id="id_mixGrid" style="height:100%;">
+        {% include '_room.html' %}
+    </div>
+    <nav aria-label="...">
+        <ul class="pager">
+            <li class="previous{% if not prev_url %} disabled{% endif %}">
+                <a href="{{ prev_url or '#' }}">
+                    <span aria-hidden="true">&larr;</span> 上一页
+                </a>
+            </li>
+            <ul class="pagination">
+                <li class="{% if not next_url %} disabled {% endif %}">
+                    <a href="{{ prev_url or '#' }}">&laquo;</a>
+                </li>
+                <li><a href="#">1</a></li>
+                <li class="{% if not next_url %} disabled {% endif %}">
+                    <a href="{{ next_url or '#' }}">&raquo;</a>
+                </li>
+            </ul>
+            <li class="next{% if not next_url %} disabled{% endif %}">
+                <a href="{{ next_url or '#' }}">
+                    下一页 <span aria-hidden="true">&rarr;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+{% endblock %}

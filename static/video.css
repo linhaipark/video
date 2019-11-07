@@ -1,0 +1,10 @@
+.table-column{
+    float:left;width:25%;border:10;height:100%;
+    }
+.table-row{
+    float:left;width:100%; border-left:10px solid #0FF;
+    border-top: 10px solid #0FF; border-right: 10px solid #0FF;border-bottom: 10px solid #0FF;
+    }
+.pic-size{
+    width: 100%; height: auto;
+    }
