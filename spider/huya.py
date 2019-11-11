@@ -24,23 +24,23 @@ class HuyaSpider(object):
             return rooms
         for room in room_list:
             item = {}
-            item['room_number'] = room['profileRoom']
+            item['room_number'] = int(room['profileRoom'])
             item['room_source'] = 'https://www.huya.com/' + str(room['profileRoom'])
-            item['room_title'] = str(room['roomName'])
+            item['room_title'] = self.change_to_utf8(room['roomName'])
             item['room_category'] = str(room['gameFullName'])
-            item['author'] = str(room['nn'])
-            item['popularity'] = int(room['ol'])
-            item['platform'] = '斗鱼TV'
+            item['author'] = self.change_to_utf8(room['nick'])
+            item['popularity'] = int(room['totalCount'])
+            item['platform'] = '虎牙TV'
             item['is_active'] = 1
             item['last_active'] = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))
             item['subscribe'] = 0
-            item['room_cover'] = str(room['rs1'])
+            item['room_cover'] = self.format_str(room['screenshot'])
             a = Huya(room_number=item['room_number'], room_source=item['room_source'], room_title=item['room_title'],
                      room_category=item['room_category'], author=item['author'], popularity=item['popularity'],
                      platform=item['platform'], is_active=item['is_active'], last_active=item['last_active'],
                      subscribe=item['subscribe'], room_cover=item['room_cover'])
             rooms.append(a)
-            print(room)
+            # print(room)
         return rooms
 
     def save_content_list(self, all_rooms):
@@ -68,15 +68,20 @@ class HuyaSpider(object):
         # 实现主要逻辑
         this_page = 1
         while True:
-            # rooms = self.get_room_list(self.start_rul + str(this_page))
-            # print(self.start_rul + str(this_page))
-            # if len(rooms) < 1:
-            #     print('complete!')
-            #     break
-            # self.save_content_list(rooms)
-            # print('the ' + str(this_page) + ' page successed!')
-            self.get_room_list(self.start_rul + str(this_page))
+            rooms = self.get_room_list(self.start_rul + str(this_page))
+            print(self.start_rul + str(this_page))
+            if len(rooms) < 1:
+                print('complete!')
+                break
+            self.save_content_list(rooms)
+            print('the ' + str(this_page) + ' page successed!')
             this_page += 1
+
+    def change_to_utf8(self, str1):
+        return str1.encode('utf-8').decode('utf-8')
+
+    def format_str(self, str1):
+        return eval(repr(str1).replace('\\', ''))
 
 
 if __name__ == '__main__':

@@ -29,7 +29,7 @@ class Douyu(db.Model):
     # 订阅
     subscribe = db.Column(db.Integer, index=True, comment='订阅')
     # 封面
-    room_cover = db.Column(db.String(128), comment='封面')
+    room_cover = db.Column(db.String(256), comment='封面')
 
     def __repr__(self):
         return '<Douyu %r>' % str(self.room_number)
@@ -62,7 +62,7 @@ class Huya(db.Model):
     # 订阅
     subscribe = db.Column(db.Integer, index=True, comment='订阅')
     # 封面
-    room_cover = db.Column(db.String(128), comment='封面')
+    room_cover = db.Column(db.String(256), comment='封面')
 
     def __repr__(self):
-        return '<Douyu %r>' % str(self.room_number)
+        return '<Huya %r>' % str(self.room_number)

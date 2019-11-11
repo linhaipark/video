@@ -8,7 +8,7 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:www.4399.com@119.23.252.15:3316/live_dev'
 SQLALCHEMY_MIGRATE_REPO = os.path.join(basedir, 'migrations')
 
-db.drop_all()
+# db.drop_all()
 db.create_all()
 if not os.path.exists(SQLALCHEMY_MIGRATE_REPO):
     api.create(SQLALCHEMY_MIGRATE_REPO, 'database repository')
