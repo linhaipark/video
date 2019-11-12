@@ -1,5 +1,11 @@
 {% extends "base.html" %}
 
+{% block menu %}
+    <div id="menu" style="float: left; height:100%; ">
+        hello
+    </div>
+{% endblock %}
+
 {% block page_content %}
     <style type="text/css">
         .table-column{float:left; width:25%; border:10; height:100%;}
@@ -7,7 +13,7 @@
                    border-right: 10px solid #FFF;border-bottom: 10px solid #FFF;}
         .pic-size{width: 97%; height: auto;}
     </style>
-    <div id="id_mixGrid" style="height:100%;">
+    <div id="id_mixGrid" style="height:100%; float:right; ">
         {% include '_room.html' %}
     </div>
     <nav aria-label="...">

@@ -1,4 +1,15 @@
 {% for room in rooms %}
+    <style type="text/css">
+        .roomTitle{
+            color: #000;
+            width: 70%;
+            font-size: 10px;
+            float: left;
+            white-space:nowrap;
+            overflow:hidden;
+            text-overflow:ellipsis;
+        }
+    </style>
     {% if loop.index%4==1 %}
         <div class="table-row">
     {% endif %}
@@ -7,8 +18,7 @@
             <img src="{{ room.room_cover }}" class="pic-size">
         </a>
         <div>
-        <div style="color: #000; width: 70%; font-size: 10px; float: left; white-space:nowrap; overflow:hidden;
-                    text-overflow:ellipsis">
+        <div class="roomTitle">
             {{ room.room_title }}
 <!--            {% if room.room_title|length>15 %}-->
 <!--                {{ room.room_title }}-->
@@ -26,7 +36,7 @@
             {{ room.author }}
         </div>
         <div style="color: #000; font-size: 10px; float: right; border-right: 15px solid #FFF">
-            {{ room.popularity }}
+            人气:{{ room.popularity }}
         </div>
         </div>
     </div>
