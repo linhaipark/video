@@ -1,5 +1,8 @@
 {% for room in rooms %}
     <style type="text/css">
+        .roomCover{
+            position: relative;
+        }
         .roomTitle{
             color: #000;
             width: 70%;
@@ -9,35 +12,60 @@
             overflow:hidden;
             text-overflow:ellipsis;
         }
+        .platform{
+            color: #FFF;
+            position: absolute;
+            background-color: #000;
+            font-size: 10px;
+            top: 0px;
+            left: 0px;
+        }
+        .roomCategory{
+            color: #000;
+            font-size: 10px;
+            position: absolute;
+            right: 0px;
+            border-right: 15px;
+            border-style: solid;
+            border-color: #FFF;
+        }
+        .popularity{
+            color: #000;
+            font-size: 10px;
+            position: absolute;
+            right: 0px;
+            border-right: 15px;
+            border-style: solid;
+            border-color: #FFF;
+        }
     </style>
     {% if loop.index%4==1 %}
         <div class="table-row">
     {% endif %}
     <div class="table-column">
-        <a href="{{ room.room_source }}" target="_blank" >
-            <img src="{{ room.room_cover }}" class="pic-size">
-        </a>
-        <div>
-        <div class="roomTitle">
-            {{ room.room_title }}
-<!--            {% if room.room_title|length>15 %}-->
-<!--                {{ room.room_title }}-->
-<!--                {{ room.room_title|truncate(length=16, killwords=False, leeway=0) }}-->
-<!--            {% else %}-->
-<!--                {{ room.room_title }}-->
-<!--            {% endif %}-->
+        <div class="roomCover">
+            <a href="{{ room.room_source }}" target="_blank" >
+                <img src="{{ room.room_cover }}" class="pic-size">
+            </a>
+            <div class="platform">
+                {{ room.platform }}
+            </div>
         </div>
-        <div style="color: #708090; font-size: 10px; float: right; border-right: 15px solid #FFF">
-            {{ room.room_category }}
+        <div style="width: 100%; position: relative; float: left;">
+            <div class="roomTitle">
+                {{ room.room_title }}
+            </div>
+            <div class="roomCategory">
+                {{ room.room_category }}
+            </div>
         </div>
-        </div>
-        <div>
-        <div style="color: #000; font-size: 10px; float: left; border-right: 15px solid #FFF">
-            {{ room.author }}
-        </div>
-        <div style="color: #000; font-size: 10px; float: right; border-right: 15px solid #FFF">
-            人气:{{ room.popularity }}
-        </div>
+        <div style="width: 100%; position: relative; float: left;">
+            <div style="color: #000; font-size: 10px; float: left; border-right: 15px solid #FFF">
+                {{ room.author }}
+            </div>
+            <div class="popularity">
+                人气:{{ room.popularity }}
+            </div>
         </div>
     </div>
     {% if loop.index%4==0 %}
